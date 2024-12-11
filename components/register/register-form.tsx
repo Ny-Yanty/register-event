@@ -5,11 +5,7 @@ import { PersonalInfo } from './steps/personal-info'
 import { ChooseAppointment } from './steps/chose-appointment'
 import { CompletionMessage } from './steps/completion-message'
 import { toast } from "sonner";
-import { TimeSlot } from './steps/timeslot'
-// import { AccountDetails } from "./steps/account-details";
-// import { Preferences } from "./steps/preferences";
-// import { Verification } from "./steps/verification";
-// import { Progress } from "@/components/ui/progress";
+import { TimeSlotSelection } from './steps/timeslots/time-slot-selection'
 
 export enum PreferredMajor {
   ComputerScience = 'Computer Science',
@@ -75,10 +71,13 @@ export type FormData = {
   IELTS: string | undefined
   email: string
   appointmentPreference: 'book_appointment' | 'school' | undefined
-  timeslot: string | undefined
+  selectedTimeSlot?: {
+    date: string;
+    time: string;
+  }
 }
 
-const STEPS = ['Personal Info', 'Account', 'Preferences', 'Verification']
+const STEPS = ['Personal Info', 'Choose Option', 'Chose timeslot']
 
 export function RegisterForm() {
   const [currentStep, setCurrentStep] = useState(0)
@@ -92,7 +91,10 @@ export function RegisterForm() {
     IELTS: undefined,
     email: '',
     appointmentPreference: undefined,
-    timeslot: undefined
+    selectedTimeSlot: {
+      date: '',
+      time: ''
+    }
   })
   const [isSubmitting, setIsSubmitting] = useState(false);
   const handleSubmission = async () => {
@@ -116,16 +118,15 @@ export function RegisterForm() {
   const nextStep = async () => {
     if (formData.appointmentPreference === "school") {
       await handleSubmission();
+    } else if (currentStep === STEPS.length - 1) {
+      await handleSubmission();
     } else {
       setCurrentStep((prev) => Math.min(prev + 1, STEPS.length - 1));
     }
-  }
+  };
   const prevStep = () => {
     setCurrentStep((prev) => Math.max(prev - 1, 0))
   }
-
-  const progress = ((currentStep + 1) / STEPS.length) * 100
-
   const renderStep = () => {
     if (currentStep === STEPS.length) {
       return <CompletionMessage />
@@ -151,29 +152,14 @@ export function RegisterForm() {
         )
       case 2:
         return (
-          <TimeSlot
+          <TimeSlotSelection
             formData={formData}
             updateFormData={updateFormData}
+            onNext={nextStep}
             onPrev={prevStep}
+            isSubmitting={isSubmitting}
           />
         );
-      // case 2:
-      //   return (
-      //     <Preferences
-      //       formData={formData}
-      //       updateFormData={updateFormData}
-      //       onNext={nextStep}
-      //       onPrev={prevStep}
-      //     />
-      //   );
-      // case 3:
-      //   return (
-      //     <Verification
-      //       formData={formData}
-      //       updateFormData={updateFormData}
-      //       onPrev={prevStep}
-      //     />
-      //   );
       default:
         return null
     }
