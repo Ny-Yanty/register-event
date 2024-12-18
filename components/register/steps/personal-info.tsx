@@ -27,7 +27,6 @@ import {
   Gender,
   PreferredMajor,
 } from '../register-form'
-import { format } from 'date-fns'
 import {
   Select,
   SelectContent,
@@ -41,7 +40,7 @@ const personalInfoSchema = z.object({
   gender: z.string(),
   age: z.string(),
   ielts: z.string(),
-  schoolName: z.string(),
+  // schoolName: z.string(),
   educationLevel: z.string(),
   preferredMajor: z.string(),
   email: z.string().email(),
@@ -64,7 +63,7 @@ export function PersonalInfo({
       fullName: formData.fullName,
       gender: formData.gender,
       age: formData.age,
-      schoolName: formData.schoolName,
+      // schoolName: formData.schoolName,
       educationLevel: formData.educationLevel,
       preferredMajor: formData.preferredMajor,
       ielts: formData.IELTS,
@@ -187,7 +186,7 @@ export function PersonalInfo({
             </FormItem>
           )}
         />
-        <FormField
+        {/* <FormField
           control={form.control}
           name="schoolName"
           render={({ field }) => (
@@ -204,7 +203,7 @@ export function PersonalInfo({
               <FormMessage />
             </FormItem>
           )}
-        />
+        /> */}
         <FormField
           control={form.control}
           name="preferredMajor"

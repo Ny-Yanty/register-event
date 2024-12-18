@@ -4,9 +4,9 @@ import { useState } from 'react'
 import { PersonalInfo } from './steps/personal-info'
 import { ChooseAppointment } from './steps/chose-appointment'
 import { CompletionMessage } from './steps/completion-message'
-import { toast } from "sonner";
+import { toast } from 'sonner'
 import { TimeSlotSelection } from './steps/timeslots/time-slot-selection'
-
+import ChoseUniversity from './steps/chose-university'
 
 export enum PreferredMajor {
   ComputerScience = 'Computer Science',
@@ -34,13 +34,11 @@ export enum EducationLevel {
   AssociateDegree = 'Associate Degree',
   BachelorDegree = "Bachelor's Degree",
   MasterDegree = "Master's Degree",
- 
 }
 export enum Gender {
   Male = 'Male',
   Female = 'Female',
 }
-
 
 export type FormData = {
   fullName: string
@@ -53,12 +51,17 @@ export type FormData = {
   email: string
   appointmentPreference: 'book_appointment' | 'school' | undefined
   selectedTimeSlot?: {
-    date: string;
-    time: string;
+    date: string
+    time: string
   }
 }
 
-const STEPS = ['Personal Info', 'Choose Option', 'Chose University', 'Chose timeslot']
+const STEPS = [
+  'Personal Info',
+  'Choose Option',
+  'Chose University',
+  'Chose timeslot',
+]
 
 export function RegisterForm() {
   const [currentStep, setCurrentStep] = useState(0)
@@ -74,37 +77,37 @@ export function RegisterForm() {
     appointmentPreference: undefined,
     selectedTimeSlot: {
       date: '',
-      time: ''
-    }
+      time: '',
+    },
   })
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const handleSubmission = async () => {
-    setIsSubmitting(true);
+    setIsSubmitting(true)
     try {
       // API HERE
-      if (formData.appointmentPreference === "school") {
-        setCurrentStep(STEPS.length);
+      if (formData.appointmentPreference === 'school') {
+        setCurrentStep(STEPS.length)
       }
-      toast.success("Registration submitted successfully!");
+      toast.success('Registration submitted successfully!')
     } catch (error) {
-      toast.error("Failed to submit registration. Please try again.");
+      toast.error('Failed to submit registration. Please try again.')
     } finally {
-      setIsSubmitting(false);
+      setIsSubmitting(false)
     }
-  };
+  }
   const updateFormData = (data: Partial<FormData>) => {
     setFormData((prev) => ({ ...prev, ...data }))
   }
 
   const nextStep = async () => {
-    if (formData.appointmentPreference === "school") {
-      await handleSubmission();
+    if (formData.appointmentPreference === 'school') {
+      await handleSubmission()
     } else if (currentStep === STEPS.length - 1) {
-      await handleSubmission();
+      await handleSubmission()
     } else {
-      setCurrentStep((prev) => Math.min(prev + 1, STEPS.length - 1));
+      setCurrentStep((prev) => Math.min(prev + 1, STEPS.length - 1))
     }
-  };
+  }
   const prevStep = () => {
     setCurrentStep((prev) => Math.max(prev - 1, 0))
   }
@@ -124,16 +127,21 @@ export function RegisterForm() {
       case 1:
         return (
           <ChooseAppointment
-          formData={formData}
-          updateFormData={updateFormData}
-          onNext={nextStep}
-          onPrev={prevStep}
-          isSubmitting={isSubmitting}
-        />
+            formData={formData}
+            updateFormData={updateFormData}
+            onNext={nextStep}
+            onPrev={prevStep}
+            isSubmitting={isSubmitting}
+          />
         )
       case 2:
         return (
-          <div>abc</div>
+          <ChoseUniversity
+            formData={formData}
+            updateFormData={updateFormData}
+            onNext={nextStep}
+            onPrev={prevStep}
+          />
         )
       case 3:
         return (
@@ -144,7 +152,7 @@ export function RegisterForm() {
             onPrev={prevStep}
             isSubmitting={isSubmitting}
           />
-        );
+        )
       default:
         return null
     }
