@@ -58,7 +58,7 @@ export type FormData = {
   }
 }
 
-const STEPS = ['Personal Info', 'Choose Option', 'Chose timeslot']
+const STEPS = ['Personal Info', 'Choose Option', 'Chose University', 'Chose timeslot']
 
 export function RegisterForm() {
   const [currentStep, setCurrentStep] = useState(0)
@@ -121,16 +121,6 @@ export function RegisterForm() {
             onNext={nextStep}
           />
         )
-      // case 1:
-      //   return (
-      //     <UniversitySelect
-      //       formData={formData}
-      //       updateFormData={updateFormData}
-      //       onNext={nextStep}
-      //       onPrev={prevStep}
-      //       isSubmitting={isSubmitting}
-      //     />
-      //   )
       case 1:
         return (
           <ChooseAppointment
@@ -141,8 +131,11 @@ export function RegisterForm() {
           isSubmitting={isSubmitting}
         />
         )
-
       case 2:
+        return (
+          <div>abc</div>
+        )
+      case 3:
         return (
           <TimeSlotSelection
             formData={formData}
