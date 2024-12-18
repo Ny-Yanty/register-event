@@ -7,6 +7,7 @@ import { CompletionMessage } from './steps/completion-message'
 import { toast } from "sonner";
 import { TimeSlotSelection } from './steps/timeslots/time-slot-selection'
 
+
 export enum PreferredMajor {
   ComputerScience = 'Computer Science',
   BusinessAdministration = 'Business Administration',
@@ -33,33 +34,13 @@ export enum EducationLevel {
   AssociateDegree = 'Associate Degree',
   BachelorDegree = "Bachelor's Degree",
   MasterDegree = "Master's Degree",
-  Doctorate = 'Doctorate',
-  Diploma = 'Diploma',
-  Certification = 'Certification',
-  Other = 'Other',
+ 
 }
 export enum Gender {
   Male = 'Male',
   Female = 'Female',
 }
-export enum Schools {
-  UniversityOfLeeds = 'University of Leeds',
-  RegentsUniversityLondon = "Regent's University London",
-  INTOUniversityPartnerships = 'INTO University Partnerships',
-  MPWCollege = 'MPW College',
-  DLDCollegeLondon = 'DLD College London',
-  UniversityOfChester = 'University of Chester',
-  UniversityOfHertfordshire = 'University of Hertfordshire',
-  UniversityOfGreenwich = 'University of Greenwich',
-  UniversityOfNorthampton = 'University of Northampton',
-  StudyGroupUK = 'Study Group UK',
-  UniversityOfEssex = 'University of Essex',
-  UniversityOfExeter = 'University of Exeter',
-  KaplanInternationalPathwaysUK = 'Kaplan International Pathways UK',
-  CATSGlobalSchools = 'CATS Global Schools',
-  SheffieldHallamUniversity = 'Sheffield Hallam University',
-  NottinghamTrentUniversity = 'Nottingham Trent University',
-}
+
 
 export type FormData = {
   fullName: string
@@ -140,16 +121,27 @@ export function RegisterForm() {
             onNext={nextStep}
           />
         )
+      // case 1:
+      //   return (
+      //     <UniversitySelect
+      //       formData={formData}
+      //       updateFormData={updateFormData}
+      //       onNext={nextStep}
+      //       onPrev={prevStep}
+      //       isSubmitting={isSubmitting}
+      //     />
+      //   )
       case 1:
         return (
           <ChooseAppointment
-            formData={formData}
-            updateFormData={updateFormData}
-            onNext={nextStep}
-            onPrev={prevStep}
-            isSubmitting={isSubmitting}
-          />
+          formData={formData}
+          updateFormData={updateFormData}
+          onNext={nextStep}
+          onPrev={prevStep}
+          isSubmitting={isSubmitting}
+        />
         )
+
       case 2:
         return (
           <TimeSlotSelection

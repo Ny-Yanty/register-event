@@ -53,9 +53,9 @@ export function ChooseAppointment({
   return (
     <div className="space-y-8">
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold tracking-tight">Choose Your Path</h2>
-        <p className="text-muted-foreground">
-          Select how you'd like to proceed with your journey
+        <h2 className="text-2xl font-semibold tracking-tight text-white">Choose Your Path</h2>
+        <p className="text-white">
+          Select how you would like to proceed with your journey
         </p>
       </div>
 

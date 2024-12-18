@@ -12,13 +12,13 @@ export function CompletionMessage() {
         <CheckCircle2 className="h-16 w-16 text-primary" />
       </div>
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold tracking-tight">
+        <h2 className="text-2xl font-semibold tracking-tight text-white">
           Thank You for Your Interest!
         </h2>
-        <p className="text-muted-foreground">
+        <p className="text-muted-foreground text-white">
           SpringBoard4Education Team will reach out to participants
         </p>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-muted-foreground text-white">
           You can expect to hear from us within 2-3 business days.
         </p>
       </div>

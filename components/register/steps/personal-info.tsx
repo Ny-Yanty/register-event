@@ -26,7 +26,6 @@ import {
   FormData,
   Gender,
   PreferredMajor,
-  Schools,
 } from '../register-form'
 import { format } from 'date-fns'
 import {
@@ -86,7 +85,7 @@ export function PersonalInfo({
           name="fullName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Full Name</FormLabel>
+              <FormLabel className="text-white">Full Name</FormLabel>
               <FormControl>
                 <Input placeholder="John" {...field} />
               </FormControl>
@@ -100,7 +99,7 @@ export function PersonalInfo({
             name="age"
             render={({ field }) => (
               <FormItem style={{ flex: 1 }}>
-                <FormLabel>Age</FormLabel>
+                <FormLabel className="text-white">Age</FormLabel>
                 <FormControl>
                   <Input placeholder="Age" {...field} type='number'/>
                 </FormControl>
@@ -113,7 +112,7 @@ export function PersonalInfo({
             name="gender"
             render={({ field }) => (
               <FormItem style={{ flex: 1 }}>
-                <FormLabel>Gender</FormLabel>
+                <FormLabel className="text-white">Gender</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
@@ -142,7 +141,7 @@ export function PersonalInfo({
             name="ielts"
             render={({ field }) => (
               <FormItem style={{ flex: 1 }}>
-                <FormLabel>IELTS</FormLabel>
+                <FormLabel className="text-white">IELTS</FormLabel>
                 <FormControl>
                   <Input type="number" placeholder="Ielts" {...field} />
                 </FormControl>
@@ -155,7 +154,7 @@ export function PersonalInfo({
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel className="text-white">Email</FormLabel>
                 <FormControl>
                   <Input type="email" placeholder="Email" {...field} />
                 </FormControl>
@@ -169,7 +168,7 @@ export function PersonalInfo({
           name="educationLevel"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Education Level</FormLabel>
+              <FormLabel className="text-white">Current Education Level</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
@@ -193,21 +192,15 @@ export function PersonalInfo({
           name="schoolName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>School Name</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select School" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {Object.values(Schools).map((school) => (
-                    <SelectItem key={school} value={school}>
-                      {school}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <FormLabel className="text-white">Your School Name</FormLabel>
+              <FormControl>
+                  <Input 
+                    type="text" 
+                    onChange={field.onChange} 
+                    value={field.value || ''}
+                    placeholder="Enter School Name" 
+                  />
+             </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -217,7 +210,7 @@ export function PersonalInfo({
           name="preferredMajor"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Preferred Major</FormLabel>
+              <FormLabel className="text-white">Preferred Major</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
