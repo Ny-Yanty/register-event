@@ -27,10 +27,10 @@ export function TimeSlotSelection({
   return (
     <div className="space-y-8">
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold tracking-tight">
+        <h2 className="text-2xl font-semibold tracking-tight text-white text-center">
           Choose Your Appointment Time
         </h2>
-        <p className="text-muted-foreground">
+        <p className="text-white text-center">
           Select a convenient time slot for your consultation
         </p>
       </div>

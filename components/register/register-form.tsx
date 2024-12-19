@@ -88,6 +88,11 @@ export function RegisterForm() {
       if (formData.appointmentPreference === 'school') {
         setCurrentStep(STEPS.length)
       }
+      if (currentStep === STEPS.length - 1) {
+        setCurrentStep(STEPS.length)
+      }
+
+      // return( <CompletionMessage />);
       toast.success('Registration submitted successfully!')
     } catch (error) {
       toast.error('Failed to submit registration. Please try again.')
