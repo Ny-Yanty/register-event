@@ -25,7 +25,8 @@ import {
   EducationLevel,
   FormData,
   Gender,
-  PreferredMajor,
+  
+
 } from '../register-form'
 import {
   Select,
@@ -43,6 +44,7 @@ const personalInfoSchema = z.object({
   // schoolName: z.string(),
   educationLevel: z.string(),
   preferredMajor: z.string(),
+  schoolName:z.string(),
   email: z.string().email(),
 })
 
@@ -66,6 +68,7 @@ export function PersonalInfo({
       // schoolName: formData.schoolName,
       educationLevel: formData.educationLevel,
       preferredMajor: formData.preferredMajor,
+      schoolName: formData.schoolName,
       IELTS: formData.IELTS,
       email: formData.email,
     },
@@ -204,46 +207,46 @@ export function PersonalInfo({
             </FormItem>
           )}
         /> */}
-        {/* <FormField
-          control={form.control}
-          name="preferredMajor"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-white">Preferred Major</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select Major" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {Object.values(PreferredMajor).map((major) => (
-                    <SelectItem key={major} value={major}>
-                      {major}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        /> */
+         
         <FormField
-  control={form.control}
-  name="preferredMajor"
-  render={({ field }) => (
-    <FormItem>
-      <FormLabel className="text-white">Preferred Major</FormLabel>
-      <FormControl>
-        <Input 
-          {...field} 
-          placeholder="Enter your preferred major" 
-        />
+            control={form.control}
+            name="preferredMajor"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-white">Preferred Major</FormLabel>
+                <FormControl>
+                  <Input 
+                    {...field} 
+              placeholder="Enter your preferred major" 
+      />
+        
       </FormControl>
       <FormMessage />
     </FormItem>
   )}
-/>}
+  
+  
+/>
+   <FormField
+     control= {form.control}
+     name="schoolName"
+     render={({ field }) => (
+      <FormItem>
+        <FormLabel className="text-white">Current school's name</FormLabel>
+        <FormControl>
+          <Input
+          {...field}
+          placeholder="Enter your current school's name" 
+          />
+        </FormControl>
+        <FormMessage />
+      </FormItem>
+     )}
+   />    
+
+
+
+
         <Button type="submit" className="w-full">
           Submit
         </Button>

@@ -36,6 +36,7 @@ export async function POST(request: Request) {
         formData.educationLevel || '',
         formData.schoolName || '',
         formData.preferredMajor || '',
+        formData.schoolName || '',
         formData.IELTS || '',
         formData.email || '',
         formData.appointmentPreference || '',

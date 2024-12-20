@@ -34,7 +34,7 @@ export default function ChoseUniversity({
     <div className=" flex gap-2 flex-col">
       <div className="flex flex-wrap gap-2">
         {universities.map((x) => (
-          <Button  className={`  ${selected == x? 'bg-rose-500': 'bg-transparent'} border-2`} onClick={() => handleOptionSelect(x)}>
+          <Button  className={`  ${selected == x? 'bg-[#bd9400]': 'bg-transparent'} border-2`} onClick={() => handleOptionSelect(x)}>
             {x}
           </Button>
         ))}
