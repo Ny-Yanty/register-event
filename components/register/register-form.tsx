@@ -7,6 +7,7 @@ import { CompletionMessage } from './steps/completion-message'
 import { toast } from 'sonner'
 import { TimeSlotSelection } from './steps/timeslots/time-slot-selection'
 import ChoseUniversity from './steps/chose-university'
+import { submitToGoogleSheets } from '@/lib/sheet'
 
 export enum PreferredMajor {
   ComputerScience = 'Computer Science',
@@ -84,14 +85,12 @@ export function RegisterForm() {
   const handleSubmission = async () => {
     setIsSubmitting(true)
     try {
-      // API HERE
-      if (formData.appointmentPreference === 'school') {
-        setCurrentStep(STEPS.length)
-      }
+      await submitToGoogleSheets(formData)
       toast.success('Registration submitted successfully!')
     } catch (error) {
       toast.error('Failed to submit registration. Please try again.')
     } finally {
+      setCurrentStep(STEPS.length)
       setIsSubmitting(false)
     }
   }
