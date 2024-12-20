@@ -86,11 +86,12 @@ export function RegisterForm() {
     setIsSubmitting(true)
     try {
       await submitToGoogleSheets(formData)
+      setCurrentStep(STEPS.length)
       toast.success('Registration submitted successfully!')
     } catch (error) {
       toast.error('Failed to submit registration. Please try again.')
+      setIsSubmitting(false)
     } finally {
-      setCurrentStep(STEPS.length)
       setIsSubmitting(false)
     }
   }

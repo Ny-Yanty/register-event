@@ -39,7 +39,7 @@ const personalInfoSchema = z.object({
   fullName: z.string().min(2, 'Name must be at least 2 characters'),
   gender: z.string(),
   age: z.string(),
-  ielts: z.string(),
+  IELTS: z.string(),
   // schoolName: z.string(),
   educationLevel: z.string(),
   preferredMajor: z.string(),
@@ -66,7 +66,7 @@ export function PersonalInfo({
       // schoolName: formData.schoolName,
       educationLevel: formData.educationLevel,
       preferredMajor: formData.preferredMajor,
-      ielts: formData.IELTS,
+      IELTS: formData.IELTS,
       email: formData.email,
     },
   })
@@ -137,7 +137,7 @@ export function PersonalInfo({
         <div className=" flex gap-2">
           <FormField
             control={form.control}
-            name="ielts"
+            name="IELTS"
             render={({ field }) => (
               <FormItem style={{ flex: 1 }}>
                 <FormLabel className="text-white">IELTS</FormLabel>

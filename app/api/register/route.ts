@@ -27,6 +27,7 @@ export async function POST(request: Request) {
     const range = 'Registrations!A1'; // Adjust the range based on your sheet
 
     // Prepare formData for insertion
+    console.log(formData)
     const values = [
       [
         formData.fullName || '',

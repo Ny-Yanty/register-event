@@ -34,6 +34,7 @@ export function ChooseAppointment({
   updateFormData,
   onNext,
   onPrev,
+  isSubmitting
 }: AppointmentChoicesProps) {
   const [selected, setSelected] = useState<string | null>(
     formData.appointmentPreference || null
@@ -77,17 +78,18 @@ export function ChooseAppointment({
           type="button"
           variant="outline"
           onClick={onPrev}
+          disabled={isSubmitting}
           className="w-full"
         >
           Previous
         </Button>
         <Button
           type="button"
-          onClick={handleNext}
+          onClick={onNext}
           className="w-full"
-          disabled={!selected}
+          disabled={!formData.appointmentPreference || isSubmitting}
         >
-          Submit
+          {isSubmitting ? 'Submitting...' : 'Submit'}
         </Button>
       </div>
     </div>

@@ -97,7 +97,7 @@ export function TimeSlotSelection({
           type="button"
           onClick={onNext}
           className="w-full"
-          disabled={!formData.selectedTimeSlot || isSubmitting}
+          disabled={!(formData.selectedTimeSlot?.date && formData.selectedTimeSlot?.time) || isSubmitting}
         >
           {isSubmitting ? 'Submitting...' : 'Complete Registration'}
         </Button>
