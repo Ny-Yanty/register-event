@@ -38,8 +38,7 @@ export async function POST(request: Request) {
         formData.IELTS || '',
         formData.email || '',
         formData.appointmentPreference || '',
-        formData.selectedTimeSlot?.date || '',
-        formData.selectedTimeSlot?.time || ''
+        formData.selectedTimeSlot ? `${formData.selectedTimeSlot.date} ${formData.selectedTimeSlot.time}` : '',
       ],
     ];
     const resource = {
