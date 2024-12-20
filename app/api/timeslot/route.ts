@@ -64,7 +64,7 @@ export async function GET(
 
     // Count registrations per time slot
     registrationRows.forEach((row) => {
-      const dateTime = `${row[9]}`; // Assuming date is in the 9th column and time slot is in the 10th column
+      const dateTime = `${row[9]}-${row[10]}`; // Assuming date is in the 10th column
       if (dateTime) {
         timeSlotCounts[dateTime] = (timeSlotCounts[dateTime] || 0) + 1;
       }
@@ -72,7 +72,7 @@ export async function GET(
 
     // Format response data
     const formattedData = timeSlots.reduce((acc: any[], slot) => {
-      const currentCount = timeSlotCounts[`${slot.date} ${slot.time}`] || 0;
+      const currentCount = timeSlotCounts[`${slot.date}-${slot.time}`] || 0;
       const isAvailable = currentCount < slot.maxCapacity;
 
       // Find or create an entry for the date

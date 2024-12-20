@@ -44,7 +44,7 @@ export function TimeSlotSelection({
       try {
         const response = await fetch('/api/timeslot')
         const data: TimeSlotGroup[] = await response.json()
-        setTimeSlots(data)
+        setTimeSlots(data || [])
       } catch (error) {
         console.error('Error fetching time slots:', error)
       } finally {
