@@ -38,7 +38,7 @@ export async function GET(
 
     // Define ranges
     const timeSlotRange = 'TimeSlots!A1:C'; // Add columns for Date, Time, and Max Capacity
-    const registrationRange = 'Registrations!A1:J'; // Replace with your registration sheet name and range
+    const registrationRange = 'Registrations!A1:K'; // Replace with your registration sheet name and range
 
     // Fetch time slot data
     const timeSlotResponse = await sheets.spreadsheets.values.get({
@@ -64,8 +64,7 @@ export async function GET(
 
     // Count registrations per time slot
     registrationRows.forEach((row) => {
-      console.log('reg, ' , row)
-      const dateTime = `${row[8]} ${row[9]}`; // Assuming date is in the 9th column and time slot is in the 10th column
+      const dateTime = `${row[9]}`; // Assuming date is in the 9th column and time slot is in the 10th column
       if (dateTime) {
         timeSlotCounts[dateTime] = (timeSlotCounts[dateTime] || 0) + 1;
       }
