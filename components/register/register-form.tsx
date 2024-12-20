@@ -9,24 +9,6 @@ import { TimeSlotSelection } from './steps/timeslots/time-slot-selection'
 import ChoseUniversity from './steps/chose-university'
 import { submitToGoogleSheets } from '@/lib/sheet'
 
-export enum PreferredMajor {
-  ComputerScience = 'Computer Science',
-  BusinessAdministration = 'Business Administration',
-  Engineering = 'Engineering',
-  Medicine = 'Medicine',
-  Law = 'Law',
-  Psychology = 'Psychology',
-  Education = 'Education',
-  ArtsAndDesign = 'Arts and Design',
-  Communications = 'Communications',
-  Economics = 'Economics',
-  Marketing = 'Marketing',
-  Biology = 'Biology',
-  Chemistry = 'Chemistry',
-  Physics = 'Physics',
-  Mathematics = 'Mathematics',
-  Other = 'Other',
-}
 
 export enum EducationLevel {
   Primary = 'Primary',
@@ -47,6 +29,7 @@ export type FormData = {
   age: string | undefined
   educationLevel: string | undefined
   schoolName: string | undefined
+  universityName: string | undefined
   preferredMajor: string | undefined
   IELTS: string | undefined
   email: string
@@ -73,6 +56,7 @@ export function RegisterForm() {
     educationLevel: undefined,
     preferredMajor: undefined,
     schoolName: undefined,
+    universityName: undefined,
     IELTS: undefined,
     email: '',
     appointmentPreference: undefined,

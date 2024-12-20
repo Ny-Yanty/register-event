@@ -232,7 +232,7 @@ export function PersonalInfo({
      name="schoolName"
      render={({ field }) => (
       <FormItem>
-        <FormLabel className="text-white">Current school's name</FormLabel>
+        <FormLabel className="text-white">Current school&apos;s name</FormLabel>
         <FormControl>
           <Input
           {...field}

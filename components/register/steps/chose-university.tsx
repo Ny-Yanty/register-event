@@ -17,12 +17,12 @@ export default function ChoseUniversity({
   onPrev,
 }: UniChoicesProps) {
   const [selected, setSelected] = useState<string | null>(
-    formData.schoolName || null
+    formData.universityName || null
   )
 
-  const handleOptionSelect = (schoolName: string) => {
-    setSelected(schoolName)
-    updateFormData({ schoolName })
+  const handleOptionSelect = (universityName: string) => {
+    setSelected(universityName)
+    updateFormData({ universityName })
   }
 
   const handleNext = () => {
@@ -34,7 +34,7 @@ export default function ChoseUniversity({
     <div className=" flex gap-2 flex-col">
       <div className="flex flex-wrap gap-2">
         {universities.map((x) => (
-          <Button  className={`  ${selected == x? 'bg-[#bd9400]': 'bg-transparent'} border-2`} onClick={() => handleOptionSelect(x)}>
+          <Button key={x}  className={`  ${selected == x? 'bg-[#bd9400]': 'bg-transparent'} border-2`} onClick={() => handleOptionSelect(x)}>
             {x}
           </Button>
         ))}
