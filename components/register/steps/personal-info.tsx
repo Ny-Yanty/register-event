@@ -204,7 +204,7 @@ export function PersonalInfo({
             </FormItem>
           )}
         /> */}
-        <FormField
+        {/* <FormField
           control={form.control}
           name="preferredMajor"
           render={({ field }) => (
@@ -227,7 +227,23 @@ export function PersonalInfo({
               <FormMessage />
             </FormItem>
           )}
+        /> */
+        <FormField
+  control={form.control}
+  name="preferredMajor"
+  render={({ field }) => (
+    <FormItem>
+      <FormLabel className="text-white">Preferred Major</FormLabel>
+      <FormControl>
+        <Input 
+          {...field} 
+          placeholder="Enter your preferred major" 
         />
+      </FormControl>
+      <FormMessage />
+    </FormItem>
+  )}
+/>}
         <Button type="submit" className="w-full">
           Submit
         </Button>
