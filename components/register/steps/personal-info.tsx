@@ -45,6 +45,7 @@ const personalInfoSchema = z.object({
   educationLevel: z.string(),
   preferredMajor: z.string(),
   schoolName:z.string(),
+  phoneNumber: z.string(), // Added phone number validation
   email: z.string().email(),
 })
 
@@ -70,6 +71,7 @@ export function PersonalInfo({
       preferredMajor: formData.preferredMajor,
       schoolName: formData.schoolName,
       IELTS: formData.IELTS,
+      phoneNumber: formData.phoneNumber, // Initialize phone number field
       email: formData.email,
     },
   })
@@ -153,18 +155,31 @@ export function PersonalInfo({
           />
           <FormField
             control={form.control}
-            name="email"
+            name="phoneNumber" // Added phone number field
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-white">Email</FormLabel>
+                <FormLabel className="text-white">Phone Number</FormLabel>
                 <FormControl>
-                  <Input type="email" placeholder="Email" {...field} />
+                  <Input type="tel" placeholder="Phone Number" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
         </div>
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-white">Email</FormLabel>
+              <FormControl>
+                <Input type="email" placeholder="Email" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <FormField
           control={form.control}
           name="educationLevel"

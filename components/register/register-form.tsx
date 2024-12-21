@@ -32,6 +32,7 @@ export type FormData = {
   universityName: string | undefined
   preferredMajor: string | undefined
   IELTS: string | undefined
+  phoneNumber: string // Added phone number field
   email: string
   appointmentPreference: 'book_appointment' | 'school' | undefined
   selectedTimeSlot?: {
@@ -58,6 +59,7 @@ export function RegisterForm() {
     schoolName: undefined,
     universityName: undefined,
     IELTS: undefined,
+    phoneNumber: '', // Initialize phone number field
     email: '',
     appointmentPreference: undefined,
     selectedTimeSlot: {

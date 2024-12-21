@@ -38,6 +38,7 @@ export async function POST(request: Request) {
         formData.universityName || '',
         formData.preferredMajor || '',
         formData.IELTS || '',
+        formData.phoneNumber || '',
         formData.email || '',
         formData.appointmentPreference || '',
         formData.selectedTimeSlot?.date || '',
