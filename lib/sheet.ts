@@ -6,6 +6,7 @@ export async function submitToGoogleSheets(formData: FormData) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+         'Cache-Control': 'no-cache, max-age=0'
       },
       body: JSON.stringify(formData),
     });

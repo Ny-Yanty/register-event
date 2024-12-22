@@ -87,7 +87,7 @@ export async function GET(
 
       return acc;
     }, []);
-
+    res.setHeader('Cache-Control', 'no-store, max-age=0');
     return NextResponse.json(formattedData);
   } catch (error: any) {
     console.error('Error fetching time slots:', error.message);
