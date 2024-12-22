@@ -42,7 +42,7 @@ export function TimeSlotSelection({
   useEffect(() => {
     async function fetchTimeSlots() {
       try {
-        const response = await fetch('/api/timeslot')
+        const response = await fetch('/api/timeslot', { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache, max-age=0' } })
         const data: TimeSlotGroup[] = await response.json()
         setTimeSlots(data || [])
       } catch (error) {
