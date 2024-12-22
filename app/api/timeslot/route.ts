@@ -12,7 +12,7 @@ interface TimeSlotCounts {
   [key: string]: number;
 }
 
-export async function GET(
+export async function POST(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -87,7 +87,6 @@ export async function GET(
 
       return acc;
     }, []);
-    req.headers['Cache-Control'] = 'no-cache, max-age=0';
     return NextResponse.json(formattedData || []);
   } catch (error: any) {
     console.error('Error fetching time slots:', error.message);
