@@ -15,5 +15,8 @@ export const universities = [
     "CATS Global Schools",
     "Sheffield Hallam University",
     "Nottingham Trent University",
+    "University of Sunderland",
+    "Myddelton College",
+    "Adcote School",
 
 ];
